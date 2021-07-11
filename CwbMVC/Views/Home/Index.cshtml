@@ -1,31 +1,82 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "玉山金控";
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>取得即時氣象資訊</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            縣市
+            <select id="area" name="area">
+                <option value="" selected>全部</option>
+                <option value="臺北市">台北市</option>
+                <option value="新北市">新北市</option>
+                <option value="桃園市">桃園市</option>
+                <option value="基隆市">基隆市</option>
+                <option value="苗栗縣">苗栗縣</option>
+                <option value="臺中市">台中市</option>
+                <option value="彰化縣">彰化縣</option>
+                <option value="南投縣">南投縣</option>
+                <option value="雲林縣">雲林縣</option>
+                <option value="嘉義縣">嘉義縣</option>
+                <option value="臺南市">台南市</option>
+                <option value="高雄市">高雄市</option>
+                <option value="屏東縣">屏東縣</option>
+                <option value="宜蘭縣">宜蘭縣</option>
+                <option value="花蓮縣">花蓮縣</option>
+                <option value="臺東縣">台東縣</option>
+                <option value="澎湖縣">澎湖縣</option>
+                <option value="金門縣">金門縣</option>
+                <option value="連江縣">連江縣</option>
+            </select>
+            <a class="btn btn-default" href="javascript:getInfo();">取得氣象資訊 &raquo;</a>
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>顯示氣象資訊</h2>
+        @*<p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>*@
+        <p><a class="btn btn-default" href="\WeatherForecasts\Index">顯示氣象資訊 &raquo;</a></p>
+    </div>
+   
+</div>
+<script language="javascript">
+    function getInfo() {
+            var area = $("#area").val();
+            //var postData = JSON.stringify({
+            //    area: area
+            //});
+          
+            //call 新增主檔、已上傳檔案、簽核與知會對象等資料
+        $.ajax({
+            url: '@Url.Action("GetInfo","Home")',
+            /*contentType: 'application/text',*/
+            type: "POST",
+            async: false,
+            cache: false,
+            data: { areaVal: area },
+            dataType: "json",
+            success: function (data) {
+                if (data[0].MainResult == 'success') {
+
+                    swal({
+                        title: "取得氣象資訊成功",
+                        type: "success",
+                        html: '<div style="text-align: left">取得氣象資訊成功，資料已經寫入資料庫。</div>',
+                    });
+                } else {
+                    alert("資料新增失敗，請聯絡管理員");
+                }
+            },
+            error: function () {
+                //刪除已新增之簽核資料
+
+                //彈跳訊息
+                alert("主檔資料新增失敗，請聯絡管理員");
+            }
+        });
+
+    }
+    
+</script>

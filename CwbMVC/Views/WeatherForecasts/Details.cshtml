@@ -1,0 +1,99 @@
+﻿@model CwbMVC.Models.WeatherForecast
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>明細</h2>
+
+<div>
+    <h4>天氣預報</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.datasetDescription)*@
+            天氣預報種類
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datasetDescription)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.locationName)*@
+            城市名稱
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locationName)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.elementName)*@
+            預報類型
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.elementName)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.startTime)*@
+            開始時間
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startTime)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.endTime)*@
+            結束時間
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endTime)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.parameterName)*@
+            參數名稱
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parameterName)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.parameterValue)*@
+            參數值
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parameterValue)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.parameterUnit)*@
+            參數單位
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parameterUnit)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.createTime)*@
+            建立時間
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.seqNo }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

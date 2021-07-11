@@ -1,0 +1,90 @@
+﻿@model IEnumerable<CwbMVC.Models.WeatherForecast>
+
+@{
+    ViewBag.Title = "玉山金控";
+}
+
+<h2>天氣預報</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.datasetDescription)*@
+            天氣預報種類
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.locationName)*@
+            城市名稱
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.elementName)*@
+            預報類型
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.startTime)*@
+            開始時間
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.endTime)*@
+            結束時間
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.parameterName)*@
+            參數名稱
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.parameterValue)*@
+            參數值
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.parameterUnit)*@
+            參數單位
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.createTime)*@
+            建立時間
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.datasetDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.locationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.elementName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parameterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parameterValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parameterUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createTime)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.seqNo }) |*@
+            @Html.ActionLink("明細", "Details", new { id=item.seqNo }) 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.seqNo })*@
+        </td>
+    </tr>
+}
+
+</table>
